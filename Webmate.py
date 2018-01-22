@@ -11,7 +11,7 @@ import pyautogui as pg
 import subprocess
 import time
 
-""" Update 3.0 """
+""" Update 3.1 """
 """ 10/17/2017 """
 
 class webmate():
@@ -19,10 +19,12 @@ class webmate():
     """  CHROME OPTIIONS """
     def __init__(self):
         self.chrome_options = webdriver.ChromeOptions()
+
         self.chrome_options.add_argument("--disable-infobars")
         self.chrome_options.add_argument("start-maximized")
         self.chrome_options.add_argument("--disable-popup-blocking")
         self.chrome_options.add_argument('--no-sandbox')
+        self.chrome_options.add_argument('--allow-hidden-media-playback')
 
         """ *REQUIRED* HIDDEN OR OPEN BROWSER """
 

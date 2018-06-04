@@ -11,8 +11,8 @@ import pyautogui as pg
 import subprocess
 import time
 
-""" Update 3.1 """
-""" 10/17/2017 """
+""" Update 3.5 """
+""" 02/16/2018 """
 
 class webmate():
 
@@ -24,6 +24,7 @@ class webmate():
         self.chrome_options.add_argument("start-maximized")
         self.chrome_options.add_argument("--disable-popup-blocking")
         self.chrome_options.add_argument('--no-sandbox')
+        self.chrome_options.add_argument('--disable-notifications')
         self.chrome_options.add_argument('--allow-hidden-media-playback')
 
         """ *REQUIRED* HIDDEN OR OPEN BROWSER """
@@ -72,25 +73,25 @@ class webmate():
 
         """ KILL ANY APPLICATION """
 
-    def kill(self, arg, times=1):
+    def killApp(self, app, times=1):
         for i in range(times):
-            subprocess.call(["taskkill", "/f", "/IM", arg])
+            subprocess.call(["taskkill", "/f", "/IM", app])
 
         """ QUIT WEBDRIVER """
 
-    def Quit(self):
+    def quitDriver(self):
         self.driver.quit()
         print "Driver quit successfull"
 
 
-    def wait(self, delay, wait_for_id):
+    def waitFor(self, delay, wait_for_id):
         try:
             myElem = WebDriverWait(self.driver, delay).until(EC.presence_of_element_located((By.ID, wait_for_id)))
             print "Success..."
         except TimeoutException:
             quit()
 
-    def gettext(self, texttype, XPATH=None, CLASS=None):
+    def getText(self, texttype, XPATH=None, CLASS=None):
         if XPATH:
             try:
                 time.sleep(1)
@@ -108,9 +109,9 @@ class webmate():
             except:
                 print "Failed getting text information"
 
-        """ FOR DROP DOWN LIST """
+        """ FOR DROP DOWN LIST #BETA """
 
-    def select(self, NAME, VALUE):
+    def getSelect(self, NAME, VALUE):
         time.sleep(0.5)
         select = Select(self.driver.find_element_by_name(NAME))
         all_selected_options = select.all_selected_options
@@ -118,26 +119,6 @@ class webmate():
 
         # select by value
         select.select_by_value(VALUE)
-
-        """ MANUALLY PRESS BUTTONS """
-
-    def tab(self, XPATH, TIMES=1):
-        for i in range(TIMES):
-            time.sleep(0.5)
-            elem = self.driver.find_element_by_xpath(XPATH)
-            elem.send_keys(Keys.TAB)
-
-    def down(self, XPATH, TIMES=1):
-        for i in range(TIMES):
-            time.sleep(0.5)
-            elem = self.driver.find_element_by_xpath(XPATH)
-            elem.send_keys(Keys.DOWN)
-
-    def enter(self, XPATH, TIMES=1):
-        for i in range(TIMES):
-            time.sleep(0.5)
-            elem = self.driver.find_element_by_xpath(XPATH)
-            elem.send_keys(Keys.RETURN)
 
 if __name__ == "__main__":
     pass

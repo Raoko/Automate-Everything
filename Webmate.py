@@ -19,6 +19,7 @@ class webmate():
     def __init__(self):
         self.chrome_options = webdriver.ChromeOptions()
 
+        """ CHROME ARGUMENTS """
         self.chrome_options.add_argument("--disable-infobars")
         self.chrome_options.add_argument("start-maximized")
         self.chrome_options.add_argument("--disable-popup-blocking")
@@ -27,7 +28,6 @@ class webmate():
         self.chrome_options.add_argument('--allow-hidden-media-playback')
 
     """ *REQUIRED* HIDDEN OR OPEN BROWSER """
-
     def loadDriver(self, PHANTOM=False):
         if PHANTOM == True:
             self.chrome_options.add_argument('headless')
@@ -35,13 +35,11 @@ class webmate():
         print "Driver Success..."
 
     """ *REQUIRED* GO TO URL SITE """
-
     def goTo(self, URL):
         self.driver.get(URL)
         print "URL Success..."
 
     """ Automated form input """
-
     def formInput(self, ID=None, XPATH=None, NAME=None, KEY=None, pressEnter=False, clear=False):
         time.sleep(0.1)
         self.driver.implicitly_wait(10)
@@ -60,7 +58,6 @@ class webmate():
         print "Success..."
 
     """ Clicks on buttons"""
-
     def buttonClick(self, ID=None, XPATH=None, NAME=None):
         time.sleep(0.1)
         self.driver.implicitly_wait(10)
@@ -73,19 +70,16 @@ class webmate():
         print "Success..."
 
     """ KILL ANY APPLICATION """
-
     def killApp(self, app, times=1):
         for i in range(times):
             subprocess.call(["taskkill", "/f", "/IM", app])
 
     """ QUIT WEBDRIVER """
-
     def quitDriver(self):
         self.driver.quit()
         print "Driver quit successfull"
 
     """ Wait for html ID to load"""
-
     def waitFor(self, delay, wait_for_id):
         try:
             myElem = WebDriverWait(self.driver, delay).until(EC.presence_of_element_located((By.ID, wait_for_id)))
@@ -94,7 +88,6 @@ class webmate():
             quit()
 
     """ Web Scrape """
-
     def getText(self, XPATH=None, CLASS=None):
         if XPATH:
             try:
@@ -115,7 +108,6 @@ class webmate():
                 print "Failed getting text information"
 
     """ FOR DROP DOWN LIST ----> #BETA <----"""
-
     def getSelect(self, NAME, VALUE):
         time.sleep(0.5)
         select = Select(self.driver.find_element_by_name(NAME))

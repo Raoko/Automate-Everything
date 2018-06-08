@@ -11,7 +11,7 @@ import pyautogui as pg
 import subprocess
 import time
 
-""" Update 3.5 """
+""" Update 3.7.1 """
 """ 02/16/2018 """
 
 class webmate():
@@ -91,13 +91,14 @@ class webmate():
         except TimeoutException:
             quit()
 
-    def getText(self, texttype, XPATH=None, CLASS=None):
+    def getText(self, XPATH=None, CLASS=None):
         if XPATH:
             try:
                 time.sleep(1)
                 for elem in self.driver.find_elements_by_xpath(XPATH):
                     time.sleep(1)
-                    print "\n" + texttype + elem.text + "\n"
+                    self.webScrape = elem.text
+                    
             except:
                 print "Failed getting text information"
         if CLASS:

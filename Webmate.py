@@ -103,7 +103,7 @@ class webmate():
                 time.sleep(0.5)
                 for elem in self.driver.find_elements_by_class(CLASS):
                     time.sleep(0.5)
-                    print "\n" + texttype + elem.text + "\n"
+                    self.webScrape = elem.text
             except:
                 print "Failed getting text information"
 

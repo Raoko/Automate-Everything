@@ -11,7 +11,7 @@ import pyautogui as pg
 import subprocess
 import time
 
-""" Update 3.7.1 """
+""" Update 3.7.2 """
 """ 08/8/2018 """
 
 class webmate():
@@ -85,12 +85,16 @@ class webmate():
         self.driver.quit()
         print "Driver quit successfull"
 
+    """ Wait for html ID to load"""
+
     def waitFor(self, delay, wait_for_id):
         try:
             myElem = WebDriverWait(self.driver, delay).until(EC.presence_of_element_located((By.ID, wait_for_id)))
             print "Success..."
         except TimeoutException:
             quit()
+
+    """ Web Scrape """
 
     def getText(self, XPATH=None, CLASS=None):
         if XPATH:

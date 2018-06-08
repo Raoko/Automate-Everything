@@ -10,7 +10,7 @@ from selenium.common.exceptions import NoSuchElementException
 import subprocess
 import time
 
-""" Update 3.7.3 """
+""" Update 3.7.4 """
 """ 08/8/2018 """
 
 class webmate():
@@ -82,7 +82,7 @@ class webmate():
     """ Wait for html ID to load"""
     def waitFor(self, delay, wait_for_id):
         try:
-            myElem = WebDriverWait(self.driver, delay).until(EC.presence_of_element_located((By.ID, wait_for_id)))
+            WebDriverWait(self.driver, delay).until(EC.presence_of_element_located((By.ID, wait_for_id)))
             print "Success..."
         except TimeoutException:
             quit()
@@ -111,8 +111,8 @@ class webmate():
     def getSelect(self, NAME, VALUE):
         time.sleep(0.5)
         select = Select(self.driver.find_element_by_name(NAME))
-        all_selected_options = select.all_selected_options
-        options = select.options
+        select.all_selected_options
+        select.options
 
         # select by value
         select.select_by_value(VALUE)

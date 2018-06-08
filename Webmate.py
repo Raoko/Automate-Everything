@@ -110,7 +110,7 @@ class webmate():
             except:
                 print "Failed getting text information"
 
-        """ FOR DROP DOWN LIST #BETA """
+        """ FOR DROP DOWN LIST ----> #BETA <----"""
 
     def getSelect(self, NAME, VALUE):
         time.sleep(0.5)

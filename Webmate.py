@@ -7,11 +7,10 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
-import pyautogui as pg
 import subprocess
 import time
 
-""" Update 3.7.2 """
+""" Update 3.7.3 """
 """ 08/8/2018 """
 
 class webmate():

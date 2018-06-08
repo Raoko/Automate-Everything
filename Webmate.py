@@ -27,7 +27,7 @@ class webmate():
         self.chrome_options.add_argument('--disable-notifications')
         self.chrome_options.add_argument('--allow-hidden-media-playback')
 
-        """ *REQUIRED* HIDDEN OR OPEN BROWSER """
+    """ *REQUIRED* HIDDEN OR OPEN BROWSER """
 
     def loadDriver(self, PHANTOM=False):
         if PHANTOM == True:
@@ -35,13 +35,13 @@ class webmate():
         self.driver = webdriver.Chrome(chrome_options=self.chrome_options)
         print "Driver Success..."
 
-        """ *REQUIRED* GO TO URL SITE """
+    """ *REQUIRED* GO TO URL SITE """
 
     def goTo(self, URL):
         self.driver.get(URL)
         print "URL Success..."
 
-        """ FUNCTIONALITY """
+    """ Automated form input """
 
     def formInput(self, ID=None, XPATH=None, NAME=None, KEY=None, pressEnter=False, clear=False):
         time.sleep(0.1)
@@ -60,6 +60,8 @@ class webmate():
             elem.send_keys(Keys.RETURN)
         print "Success..."
 
+    """ Clicks on buttons"""
+
     def buttonClick(self, ID=None, XPATH=None, NAME=None):
         time.sleep(0.1)
         self.driver.implicitly_wait(10)
@@ -71,18 +73,17 @@ class webmate():
             self.driver.find_element_by_name(NAME).click()
         print "Success..."
 
-        """ KILL ANY APPLICATION """
+    """ KILL ANY APPLICATION """
 
     def killApp(self, app, times=1):
         for i in range(times):
             subprocess.call(["taskkill", "/f", "/IM", app])
 
-        """ QUIT WEBDRIVER """
+    """ QUIT WEBDRIVER """
 
     def quitDriver(self):
         self.driver.quit()
         print "Driver quit successfull"
-
 
     def waitFor(self, delay, wait_for_id):
         try:
@@ -110,7 +111,7 @@ class webmate():
             except:
                 print "Failed getting text information"
 
-        """ FOR DROP DOWN LIST ----> #BETA <----"""
+    """ FOR DROP DOWN LIST ----> #BETA <----"""
 
     def getSelect(self, NAME, VALUE):
         time.sleep(0.5)

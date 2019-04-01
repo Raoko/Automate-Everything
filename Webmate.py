@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
@@ -58,13 +59,13 @@ class webmate():
         print "Success..."
 
     """ Clicks on buttons"""
-    def buttonClick(self, ID=None, XPATH=None, NAME=None):
+    def buttonClick(self, CLASS=None, XPATH=None, NAME=None):
         time.sleep(0.1)
         self.driver.implicitly_wait(10)
         if XPATH:
             self.driver.find_element_by_xpath(XPATH).click()
         elif ID:
-            self.driver.find_element_by_id(ID).click()
+            self.driver.find_element_by_class(CLASS).click()
         elif NAME:
             self.driver.find_element_by_name(NAME).click()
         print "Success..."

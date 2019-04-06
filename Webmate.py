@@ -11,8 +11,8 @@ from selenium.common.exceptions import NoSuchElementException
 import subprocess
 import time
 
-""" Update 3.7.4 """
-""" 08/8/2018 """
+""" Update 3.8 """
+""" 04/06/2019 """
 
 class webmate():
 
@@ -95,8 +95,7 @@ class webmate():
                 time.sleep(1)
                 for elem in self.driver.find_elements_by_xpath(XPATH):
                     time.sleep(1)
-                    self.webScrape = elem.text
-                    
+                    return elem.text
             except:
                 print "Failed getting text information"
         if CLASS:
@@ -104,7 +103,7 @@ class webmate():
                 time.sleep(0.5)
                 for elem in self.driver.find_elements_by_class(CLASS):
                     time.sleep(0.5)
-                    self.webScrape = elem.text
+                    return elem.text
             except:
                 print "Failed getting text information"
 
